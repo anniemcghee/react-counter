@@ -5,30 +5,31 @@ import Counter from './components/Counter'
 
 class App extends Component {
   state = {
-    firstInput: 5,
-    secondInput: 0
+    firstInput: null,
+    secondInput: null
   }
 
   updateInput = (inputName, value) => {
+    let val = Number(value);
     this.setState({
-      [`${inputName}`] : value
+      [`${inputName}`] : val
     })
   }
 
   increment = (options) => {
     for (let inputName of options) {
-      const val = `this.state.${inputName}`
+      let val = this.state[inputName] + 1
       this.setState({
-        [`${inputName}`]: val++
+        [`${inputName}`]: val
       })
     }
   }
 
   decrement = (options) => {
     for (let inputName of options) {
-      const val = `this.state.${inputName}`
+      let val = this.state[inputName] - 1
       this.setState({
-        [`${inputName}`]: val--
+        [`${inputName}`]: val
       })
     }
   }
